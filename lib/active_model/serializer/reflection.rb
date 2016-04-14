@@ -17,7 +17,7 @@ module ActiveModel
     #
     # So you can inspect reflections in your Adapters.
     #
-    Reflection = Struct.new(:name, :options) do
+    Reflection = Struct.new(:name, options) do
       # Build association. This method is used internally to
       # build serializer's association by its reflection.
       #
