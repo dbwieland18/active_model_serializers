@@ -41,7 +41,7 @@ module ActiveModel
       #
       def build_association(subject, parent_serializer_options)
         association_value = subject.send(name)
-        reflection_options = options.dup unless options.is_a? Symbol
+        reflection_options = options.is_a? Symbol ? {} : options.dup
         ### DT / AJL: Merge the parent_serializer_options with the reflection_options
         serializer_class = ActiveModel::Serializer.serializer_for(association_value, parent_serializer_options.merge(reflection_options))
         ### DT / AJL
