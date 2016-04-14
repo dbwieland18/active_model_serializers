@@ -17,7 +17,7 @@ module ActiveModel
     #
     # So you can inspect reflections in your Adapters.
     #
-    Reflection = Struct.new(:name, options) do
+    Reflection = Struct.new(:name, :options) do
       # Build association. This method is used internally to
       # build serializer's association by its reflection.
       #
@@ -41,7 +41,7 @@ module ActiveModel
       #
       def build_association(subject, parent_serializer_options)
         association_value = subject.send(name)
-        reflection_options = options.dup
+        reflection_options = options.dup unless options.is_a? Symbol
         ### DT / AJL: Merge the parent_serializer_options with the reflection_options
         serializer_class = ActiveModel::Serializer.serializer_for(association_value, parent_serializer_options.merge(reflection_options))
         ### DT / AJL
